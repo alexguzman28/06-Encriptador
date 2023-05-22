@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Encriptador Alura</title>
+		<link rel= "stylesheet" href="reset.css">
+		<link rel= "stylesheet" href="style.css">
+
+	</head>
+
+    <body>
+
+        <header>
+
+            <img class="logoPrincipal" src="Imagenes/Logo.png">
+
+        </header>
+
+        <main>
+
+            <div class="frame1">
+
+                <img class="advertencia" src="Imagenes/iconoAdv.png">
+                <p>Solo letras minúsculas y sin acentos</p>
+
+            </div>
+                
+            <div class="botones">
+
+                <input type="button" value="Encriptar"  class="encriptar">
+                <input type="button" value="Desencriptar" class="desencriptar">
+
+            </div> 
+
+            <div class="ingreseTexto">
+
+                <label for="texto">Ingrese su texto</label>
+                <textarea cols="46" rows="10" id="texto" placeholder="Escriba su texto aquí"></textarea>
+
+            </div>
+
+            <div class="frame5">
+                
+                <img class="rectangulo" src="Imagenes/Rectangle 1.png">
+
+                <div class="botonCopiar">
+
+                    <input type="button" value="Copiar"  id="copiar">
+
+                </div>
+                
+                <div id="preview">
+
+                    <h2><img class="munheco" src="Imagenes/Muñeco.png"></h2>
+
+                    <div id="textoConjunto">
+
+                        <h3 class="texto1">Ningún mensaje fue encontrado</h3>
+                        <p class="texto2">Ingresa el texto que desees encriptar o desencriptar.</p>
+
+                    </div>
+                    
+
+                </div>
+                
+
+            </div>            
+            
+            <textarea cols="46" rows="10" id="resultado"></textarea>
+        
+        </main>
+
+        <footer class="footer">
+
+            <p class="footerText">Alan Alejandro Arevalo Guzmán</p>
+
+        </footer>
+
+
+    </body>
+
+</html>
+
+
+
+
+<script>
+
+function encriptarText() {
+    var textArea = document.querySelector("textarea");
+    var textoIngresado = textArea.value;  
+    let reemplazado = textoIngresado.replaceAll("e", "enter").replaceAll("i", "imes"). replaceAll("a", "ai").replaceAll("o", "ober").replaceAll("u", "ufat");
+    console.log(reemplazado);
+    if(textoIngresado.trim() === "") {
+        document.getElementById("preview").style.display = "block"
+        document.getElementById("copiar").style.display = "none"
+        texto.focus();
+        } else {
+            document.getElementById("preview").style.display = "none"; 
+        }
+            navigator.clipboard.writeText(reemplazado).then(function() {
+            resultado.focus();
+            resultado.value = reemplazado;
+            });
+
+}
+
+function desencriptarText() {
+    var textArea = document.querySelector("textarea");
+    var textoIngresado = textArea.value;  
+    let reemplazado2 = textoIngresado.replaceAll("enter", "e").replaceAll("imes", "i"). replaceAll("ai", "a").replaceAll("ober", "o").replaceAll("ufat", "u");
+    console.log(reemplazado2);
+    if(textoIngresado.trim() === "") {
+        document.getElementById("preview").style.display = "block";
+        } else {
+            document.getElementById("preview").style.display = "none"; 
+        }
+            navigator.clipboard.writeText(reemplazado2).then(function() {
+            resultado.focus();
+            resultado.value = reemplazado2;
+            });
+}
+
+function copiarText(){
+    var textArea = document.querySelector("resultado");
+    var textoCopiado = resultado.value; 
+    navigator.clipboard.writeText(textoCopiado)
+}
+
+    var encriptar = document.querySelector(".encriptar");
+        encriptar.onclick = function() {
+        encriptarText();
+    }
+
+    var desencriptar = document.querySelector(".desencriptar");
+        desencriptar.onclick = function() {
+        desencriptarText();
+    }
+
+    var copiar = document.querySelector(".copiar");
+        copiar.onclick = function() {
+        copiarText();
+    }
+
+        /*
+        Las "llaves" de encriptación que utilizaremos son las siguientes:
+
+        La letra "e" es convertida para "enter"
+        La letra "i" es convertida para "imes"
+        La letra "a" es convertida para "ai"
+        La letra "o" es convertida para "ober"
+        La letra "u" es convertida para "ufat" 
+        */
+
+</script> 
+
