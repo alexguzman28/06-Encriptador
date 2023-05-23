@@ -797,7 +797,7 @@ textarea {
 
         position: absolute;
         width: 95%;
-        height: 30px;
+        height: 30%;
         left: 16px;
         top: 152px;
 
@@ -825,6 +825,7 @@ textarea {
         font-size: 32px;
         line-height: 85%;
         width: 95%;
+        height: fit-content;
         /* identical to box height, or 48px */
     
     
@@ -877,7 +878,7 @@ textarea {
 
         position: absolute;
         width: 79%;
-        height: 191px;
+        height: fit-content;
         left: 4%;
         top: 707px;
 
